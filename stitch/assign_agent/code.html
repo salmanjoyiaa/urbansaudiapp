@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Assign Agent | The Digital Concierge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Outfit:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#cebdff",
+              "on-primary": "#ffffff",
+              "surface-dim": "#ced9ff",
+              "inverse-on-surface": "#eef0ff",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#e8ddff",
+              "tertiary-container": "#34008b",
+              "outline-variant": "#c5c6d0",
+              "surface": "#faf8ff",
+              "primary-fixed-dim": "#b5c5f9",
+              "on-tertiary-fixed-variant": "#4f29ab",
+              "tertiary": "#1d0055",
+              "on-tertiary-fixed": "#21005e",
+              "error": "#ba1a1a",
+              "secondary-fixed": "#dbe1ff",
+              "surface-container-highest": "#dae2ff",
+              "inverse-surface": "#1e2f59",
+              "on-surface-variant": "#45464f",
+              "on-surface": "#051943",
+              "surface-bright": "#faf8ff",
+              "on-primary-fixed": "#051943",
+              "primary-fixed": "#dae2ff",
+              "secondary": "#1952cc",
+              "secondary-container": "#3d6de6",
+              "primary": "#021540",
+              "surface-tint": "#4d5d8a",
+              "outline": "#757780",
+              "surface-container-low": "#f2f3ff",
+              "on-tertiary": "#ffffff",
+              "on-background": "#051943",
+              "secondary-fixed-dim": "#b4c5ff",
+              "on-primary-container": "#8393c3",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#9f7eff",
+              "background": "#faf8ff",
+              "on-secondary-fixed-variant": "#003ea8",
+              "surface-container": "#eaedff",
+              "on-error": "#ffffff",
+              "inverse-primary": "#b5c5f9",
+              "surface-container-high": "#e2e7ff",
+              "surface-variant": "#dae2ff",
+              "error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#354571",
+              "primary-container": "#1a2b55",
+              "on-secondary-fixed": "#00174b",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#fefcff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        vertical-align: middle;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #dae2ff;
+        border-radius: 10px;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+<!-- Background Content (Simulated Home Screen) -->
+<div class="fixed inset-0 z-0 overflow-hidden opacity-40 grayscale pointer-events-none">
+<header class="flex justify-between items-center w-full px-6 py-4 max-w-screen-xl mx-auto bg-[#faf8ff]">
+<div class="text-xl font-bold tracking-tight text-[#021540]">The Digital Concierge</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-500">notifications</span>
+<div class="w-8 h-8 rounded-full bg-slate-200"></div>
+</div>
+</header>
+<main class="p-6 space-y-8">
+<div class="h-48 w-full bg-surface-container-low rounded-xl"></div>
+<div class="grid grid-cols-2 gap-4">
+<div class="h-32 bg-surface-container-low rounded-xl"></div>
+<div class="h-32 bg-surface-container-low rounded-xl"></div>
+</div>
+<div class="h-64 w-full bg-surface-container-low rounded-xl"></div>
+</main>
+</div>
+<!-- Backdrop Overlay -->
+<div class="fixed inset-0 bg-primary/20 backdrop-blur-sm z-10"></div>
+<!-- Bottom Sheet Container -->
+<div class="fixed inset-x-0 bottom-0 z-20 flex flex-col items-center">
+<!-- Slide-up Content -->
+<div class="w-full max-w-2xl bg-surface-container-low rounded-t-[2.5rem] shadow-[0_-8px_40px_rgba(5,25,67,0.12)] flex flex-col max-h-[813px]">
+<!-- Grabber & Header -->
+<div class="flex flex-col items-center pt-4 pb-6 px-8">
+<div class="w-12 h-1.5 bg-outline-variant/30 rounded-full mb-8"></div>
+<div class="w-full flex justify-between items-end">
+<div>
+<h2 class="font-headline text-3xl font-bold text-primary tracking-tight">Assign Agent</h2>
+<p class="text-on-surface-variant font-body text-sm mt-1">Select a concierge for this property visit</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-highest/50 hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+</div>
+<!-- Search Bar Section -->
+<div class="px-8 mb-6">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-secondary transition-colors">search</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-4 pl-12 pr-4 shadow-sm focus:ring-2 focus:ring-secondary/20 font-body placeholder:text-outline transition-all" placeholder="Search by name or specialty..." type="text"/>
+</div>
+</div>
+<!-- Agent List (Bento-style scrollable area) -->
+<div class="flex-1 overflow-y-auto px-8 custom-scrollbar">
+<div class="space-y-4 pb-32">
+<!-- Agent Card: Active Selection -->
+<div class="relative p-5 bg-surface-container-lowest border-2 border-secondary rounded-[1.5rem] shadow-sm flex items-center justify-between group transition-all transform active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="professional headshot of a friendly female real estate agent with warm lighting and a soft architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu8KjZF95OJ0E2x1jqY7VL_IdIw1IExDPLsfs-inwKqFZkwz48nCMCE2tBGpnLMFoQuPRCYtxr1x3SamSaN2OJMFrzMg8zIfkr41wKXpUvI9UuMXkzpxjSAgcVVHy_vpHGATTW0Wr6QzJnFxiPfsfLkTQqKrq4zjHTRSUBVULWTwTVDLd0qdnjHoNzDvAacnrdrLW15YwIj-SnUq4dtgGg9u2JQFCVUJHnjOyXb6_NT07r1LrSJN0-0rxwF3ULOj8VNNoYwWsNuCHr"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-[#2CC763] border-2 border-surface-container-lowest rounded-full"></div>
+</div>
+<div>
+<h3 class="font-headline font-semibold text-primary">Sarah Jenkins</h3>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-xs font-medium text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">Premier Expert</span>
+<span class="text-[11px] text-on-surface-variant">• 4.9 ★</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<span class="text-[10px] uppercase tracking-wider text-outline font-bold">Availability</span>
+<p class="text-xs text-on-surface font-semibold">Immediate</p>
+</div>
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+</div>
+<!-- Agent Card: Available -->
+<div class="p-5 bg-surface-container-lowest/60 hover:bg-surface-container-lowest rounded-[1.5rem] flex items-center justify-between group transition-all transform active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="portrait of a confident male concierge in a professional suit with natural outdoor lighting and soft greenery background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADh94G6khguh-973ZlB62yL8GIeA6O64rEnFGxr8N60I_4GfWw-NdEnKBGAJjcOLoSFAymhejc1Ce50Zgpoo0n40uKsrmEVweTcDSLuwJ3jeGpGiclwGUyLzv4i3Sp-sSe4GaCQbb20-6aZKpSU5PEPiZAGmTPhNvuEX5Gh5mv2PbPrqxfIhgM8rodm6X-lIWQWppyjWRQGdOZifDyu_yfty2rKXmMulLox_hFXRG456qj-AbfIkZ_95Ty6a9-wabEh8k6UYifZddU"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-[#2CC763] border-2 border-surface-container-lowest rounded-full"></div>
+</div>
+<div>
+<h3 class="font-headline font-semibold text-primary">Marcus Vance</h3>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-xs font-medium text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">Local Specialist</span>
+<span class="text-[11px] text-on-surface-variant">• 4.7 ★</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<span class="text-[10px] uppercase tracking-wider text-outline font-bold">Availability</span>
+<p class="text-xs text-on-surface font-semibold">In 30 mins</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-secondary transition-colors"></div>
+</div>
+</div>
+<!-- Agent Card: Busy -->
+<div class="p-5 bg-surface-container-lowest/60 opacity-70 grayscale-[0.5] rounded-[1.5rem] flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="close up of a professional woman with glasses smiling warmly in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWT0kt91r0eyGT3qfZtmct7FT-EdDD1Z2MTS-829Ls0H1d2pWcnXabPoYNsWHGauliuJwTtiN-N4-6tpVht6owZVhBKNEamNzXzwdhQ4ahuFNLmquvWehznq9Qna08MlDjIc-kLJuuG_NOb3M6jMd5POV9NqtNj2XUFxQM8w_KQnj37EP6Mrh9UNaAlhBfBaXtgls2XbNSdZxbLtPhNgyDI8ge72eWjwyhNLpBJJ5VP3Y6jxDccJOunWeOhPBj5pbLJxpXQrWdjdAW"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-amber-400 border-2 border-surface-container-lowest rounded-full"></div>
+</div>
+<div>
+<h3 class="font-headline font-semibold text-primary">Elena Rodriguez</h3>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-xs font-medium text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">Luxury Liaison</span>
+<span class="text-[11px] text-on-surface-variant">• 5.0 ★</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<span class="text-[10px] uppercase tracking-wider text-outline font-bold">Availability</span>
+<p class="text-xs text-amber-600 font-semibold">Busy until 4PM</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant"></div>
+</div>
+</div>
+<!-- Agent Card: Available -->
+<div class="p-5 bg-surface-container-lowest/60 hover:bg-surface-container-lowest rounded-[1.5rem] flex items-center justify-between group transition-all transform active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="smiling mature man with a professional demeanor in a soft-lit indoor setting with clean lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfYTx6VfewGxRCbmfBwhBySy4JD_Q6y-7dtv4S88M1M318iKp4B-NvFy_Dra1Le3pdZQXUUb8L_FQ24fxD_b5Ro2CeMzLMOGKACJ43GVlD1UPXu5NmxJkT1OI-Wiv6gmbkWBrG05bpsUWeYgnY3PQ-wygZ5BxRDZ1A4u3mwlGou-ZQ_JyqIaudmCyHfDJIIXvYVfhDtCXBVRd0mJJoQM9xXKZjfMDDTRHtXW0b3BMc22yq7YXjScS7IpDNoh3SVaLsE4sM0nEJIZD1"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-[#2CC763] border-2 border-surface-container-lowest rounded-full"></div>
+</div>
+<div>
+<h3 class="font-headline font-semibold text-primary">David Chen</h3>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-xs font-medium text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">Tech Integration</span>
+<span class="text-[11px] text-on-surface-variant">• 4.8 ★</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<span class="text-[10px] uppercase tracking-wider text-outline font-bold">Availability</span>
+<p class="text-xs text-on-surface font-semibold">Immediate</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-secondary transition-colors"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Area -->
+<div class="absolute bottom-0 left-0 right-0 p-8 pt-4 bg-gradient-to-t from-surface-container-low via-surface-container-low/95 to-transparent">
+<button class="w-full py-5 rounded-2xl bg-gradient-to-r from-primary to-primary-container text-white font-headline font-bold text-lg shadow-xl shadow-primary/20 active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+                    Confirm Assignment
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Mandatory Global Navigation Suppressed for Focused Task -->
+<!-- (Suppressed per instructions: Task-Focused journey with "Close" action) -->
+</body></html>

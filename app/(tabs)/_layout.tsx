@@ -1,47 +1,67 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { colors, spacing } from '@/theme';
+import { colors, spacing, shadows, typography } from '@/theme';
 import { useNotificationBadge } from '@/hooks/useNotifications';
 
+/**
+ * Tab layout — warm amber active accent, custom font labels,
+ * polished tab bar with soft shadow.
+ */
 export default function TabLayout() {
   const unreadCount = useNotificationBadge();
 
   return (
     <Tabs
       screenOptions={{
+        headerTitleAlign: 'center',
         headerStyle: {
           backgroundColor: colors.background,
           shadowColor: 'transparent',
           elevation: 0,
+          borderBottomColor: colors.borderLight,
           borderBottomWidth: 1,
-          borderBottomColor: colors.border,
         },
         headerTitleStyle: {
+          ...typography.h3,
           color: colors.textPrimary,
-          fontWeight: '700',
-          fontSize: 18,
         },
+        headerTintColor: colors.primary,
         tabBarStyle: {
-          backgroundColor: colors.background,
-          borderTopColor: colors.border,
-          borderTopWidth: 1,
-          paddingBottom: spacing.xs,
+          backgroundColor: colors.surfaceElevated,
+          borderTopWidth: 0,
+          marginHorizontal: spacing.sm,
+          marginBottom: spacing.sm,
+          borderRadius: 26,
+          paddingBottom: spacing.sm,
           paddingTop: spacing.xs,
-          height: 60,
+          height: 68,
+          borderWidth: 1,
+          borderColor: colors.borderLight,
+          ...shadows.medium,
+          shadowOffset: { width: 0, height: 8 },
+          shadowOpacity: 0.08,
         },
-        tabBarActiveTintColor: colors.primary,
+        tabBarActiveTintColor: colors.accent,
         tabBarInactiveTintColor: colors.textMuted,
         tabBarLabelStyle: {
-          fontSize: 11,
-          fontWeight: '600',
+          ...typography.tabLabel,
         },
+        tabBarItemStyle: {
+          paddingTop: spacing.xs,
+          paddingBottom: spacing.xs,
+        },
+        tabBarIconStyle: {
+          marginTop: 2,
+        },
+        tabBarLabelPosition: 'below-icon',
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Dashboard',
+          headerTitle: 'UrbanSaudi',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="grid-outline" size={size} color={color} />
           ),
@@ -69,15 +89,17 @@ export default function TabLayout() {
             backgroundColor: colors.error,
             fontSize: 10,
             fontWeight: '700',
+            color: colors.textInverse,
+            borderWidth: 0,
           },
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'Settings',
+          title: 'Profile',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings-outline" size={size} color={color} />
+            <Ionicons name="person-outline" size={size} color={color} />
           ),
         }}
       />

@@ -1,46 +1,42 @@
 {
   "expo": {
     "name": "UrbanSaudi Admin",
-    "slug": "theurbanrealestatesaudi",
+    "slug": "urbansaudi-mobile-admin",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "urbansaudi-admin",
-    "userInterfaceStyle": "dark",
-    "newArchEnabled": true,
+    "scheme": "urbansaudiadmin",
+    "userInterfaceStyle": "automatic",
     "splash": {
-      "backgroundColor": "#0A1628",
-      "resizeMode": "contain"
+      "image": "./assets/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F7F5F0"
     },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.urbansaudi.admin"
+      "bundleIdentifier": "com.salmanjoyiaa.urbansaudimobileadmin",
+      "supportsTablet": true
     },
     "android": {
+      "package": "com.salmanjoyiaa.urbansaudimobileadmin",
       "adaptiveIcon": {
-        "backgroundColor": "#0A1628"
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#021540"
       },
-      "package": "com.urbansaudi.admin"
+      "softwareKeyboardLayoutMode": "resize"
+    },
+    "web": {
+      "favicon": "./assets/icon.png"
     },
     "plugins": [
       "expo-router",
-      "expo-secure-store",
-      [
-        "expo-notifications",
-        {
-          "icon": "./assets/notification-icon.png",
-          "color": "#D4A853"
-        }
-      ],
-      "expo-font"
+      "expo-notifications"
     ],
-    "experiments": {
-      "typedRoutes": true
-    },
     "extra": {
-      "router": {},
       "eas": {
-        "projectId": "88d0fb7f-9420-4f07-b1b3-bb485b2e33b2"
+        "projectId": "73769b9d-07c8-4e97-9d67-af44eacad002"
       }
     }
   }

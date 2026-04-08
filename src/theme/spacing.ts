@@ -14,9 +14,21 @@ export const spacing = {
 } as const;
 
 export const borderRadius = {
+  xs: 4,
   sm: 6,
-  md: 10,
-  lg: 14,
-  xl: 18,
-  full: 999,
+  md: 12,
+  lg: 16,
+  xl: 24,
+  full: 9999,
+} as const;
+
+/** Animation tokens */
+export const animation = {
+  /** Durations in ms */
+  fast: 150,
+  normal: 250,
+  slow: 400,
+  /** Press feedback */
+  pressScale: 0.97,
+  pressOpacity: 0.85,
 } as const;

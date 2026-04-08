@@ -3,7 +3,6 @@ import {
   View,
   Text,
   FlatList,
-  TouchableOpacity,
   RefreshControl,
   StyleSheet,
 } from 'react-native';
@@ -11,6 +10,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { colors, spacing, borderRadius, typography } from '@/theme';
 import { useNotifications, useMarkNotificationRead, useMarkAllNotificationsRead } from '@/hooks/useNotifications';
 import { timeAgo } from '@/utils/format';
+import { PressableScale } from '@/components/ui/PressableScale';
+import { AppEmptyState } from '@/components/ui/AppEmptyState';
 import type { Notification } from '@/types';
 
 const NOTIFICATION_ICONS: Record<string, keyof typeof Ionicons.glyphMap> = {
@@ -34,16 +35,15 @@ export default function NotificationsScreen() {
   };
 
   const renderItem = ({ item }: { item: Notification }) => (
-    <TouchableOpacity
+    <PressableScale
       onPress={() => handlePress(item)}
-      activeOpacity={0.7}
       style={[styles.row, !item.read && styles.unread]}
     >
       <View style={[styles.iconContainer, !item.read && styles.iconUnread]}>
         <Ionicons
           name={NOTIFICATION_ICONS[item.type] || NOTIFICATION_ICONS.default}
           size={18}
-          color={!item.read ? colors.primary : colors.textMuted}
+          color={!item.read ? colors.secondary : colors.textMuted}
         />
       </View>
       <View style={styles.content}>
@@ -54,21 +54,21 @@ export default function NotificationsScreen() {
         <Text style={styles.time}>{timeAgo(item.created_at)}</Text>
       </View>
       {!item.read && <View style={styles.unreadDot} />}
-    </TouchableOpacity>
+    </PressableScale>
   );
 
   return (
     <View style={styles.container}>
       {/* Header action */}
       {unreadCount > 0 && (
-        <TouchableOpacity
+        <PressableScale
           style={styles.markAllBar}
           onPress={() => markAllRead.mutate()}
           disabled={markAllRead.isPending}
         >
-          <Ionicons name="checkmark-done-outline" size={16} color={colors.primary} />
+          <Ionicons name="checkmark-done-outline" size={16} color={colors.secondary} />
           <Text style={styles.markAllText}>Mark all {unreadCount} as read</Text>
-        </TouchableOpacity>
+        </PressableScale>
       )}
 
       <FlatList
@@ -79,20 +79,20 @@ export default function NotificationsScreen() {
           <RefreshControl
             refreshing={isRefetching}
             onRefresh={refetch}
-            tintColor={colors.primary}
-            colors={[colors.primary]}
-            progressBackgroundColor={colors.surface}
+            tintColor={colors.secondary}
+            colors={[colors.secondary]}
+            progressBackgroundColor={colors.surfaceElevated}
           />
         }
         contentContainerStyle={
           (!notifications || notifications.length === 0) ? { flex: 1 } : { paddingBottom: spacing['3xl'] }
         }
         ListEmptyComponent={
-          <View style={styles.emptyContainer}>
-            <Ionicons name="notifications-off-outline" size={48} color={colors.textMuted} />
-            <Text style={styles.emptyTitle}>All caught up</Text>
-            <Text style={styles.emptySubtitle}>No notifications to display</Text>
-          </View>
+          <AppEmptyState
+            icon="notifications-off-outline"
+            title="All caught up"
+            subtitle="No notifications to display right now."
+          />
         }
       />
     </View>
@@ -110,36 +110,42 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: spacing.xs,
     paddingVertical: spacing.md,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border,
+    backgroundColor: colors.secondaryLight,
+    marginHorizontal: spacing.base,
+    marginTop: spacing.sm,
+    borderRadius: borderRadius.full,
   },
   markAllText: {
     ...typography.bodySmall,
-    color: colors.primary,
+    color: colors.secondary,
     fontWeight: '600',
   },
   row: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     paddingHorizontal: spacing.base,
-    paddingVertical: spacing.md,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border,
+    paddingVertical: spacing.base,
     gap: spacing.md,
+    marginHorizontal: spacing.base,
+    marginTop: spacing.sm,
+    borderRadius: borderRadius.lg,
+    borderWidth: 1,
+    borderColor: colors.border,
   },
   unread: {
     backgroundColor: colors.surface,
+    borderColor: colors.primaryBorder,
   },
   iconContainer: {
-    width: 36,
-    height: 36,
+    width: 40,
+    height: 40,
     borderRadius: borderRadius.md,
-    backgroundColor: colors.surfaceElevated,
+    backgroundColor: colors.surface,
     alignItems: 'center',
     justifyContent: 'center',
   },
   iconUnread: {
-    backgroundColor: colors.primaryLight,
+    backgroundColor: colors.secondaryLight,
   },
   content: {
     flex: 1,
@@ -167,21 +173,7 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.secondary,
     marginTop: 6,
-  },
-  emptyContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.md,
-  },
-  emptyTitle: {
-    ...typography.h3,
-    color: colors.textSecondary,
-  },
-  emptySubtitle: {
-    ...typography.bodySmall,
-    color: colors.textMuted,
   },
 });

@@ -1,15 +1,16 @@
 import React from 'react';
 import {
-  TouchableOpacity,
   Text,
   ActivityIndicator,
   StyleSheet,
   ViewStyle,
   TextStyle,
+  View,
 } from 'react-native';
 import { colors, spacing, borderRadius, typography } from '@/theme';
+import { PressableScale } from './PressableScale';
 
-type Variant = 'primary' | 'secondary' | 'destructive' | 'ghost' | 'outline';
+type Variant = 'primary' | 'secondary' | 'destructive' | 'danger' | 'ghost' | 'outline';
 type Size = 'sm' | 'md' | 'lg';
 
 interface ButtonProps {
@@ -23,6 +24,10 @@ interface ButtonProps {
   style?: ViewStyle;
 }
 
+/**
+ * Premium button with PressableScale micro-interaction.
+ * Variants: primary (midnight blue), secondary (surface), destructive/danger (red), ghost, outline.
+ */
 export function Button({
   title,
   onPress,
@@ -34,16 +39,19 @@ export function Button({
   style,
 }: ButtonProps) {
   const isDisabled = disabled || loading;
+  // Normalize 'danger' → 'destructive'
+  const resolvedVariant = variant === 'danger' ? 'destructive' : variant;
 
   return (
-    <TouchableOpacity
+    <PressableScale
       onPress={onPress}
       disabled={isDisabled}
-      activeOpacity={0.7}
+      activeScale={0.97}
+      activeOpacity={isDisabled ? 1 : 0.85}
       style={[
         styles.base,
         sizeStyles[size],
-        variantStyles[variant],
+        variantStyles[resolvedVariant],
         isDisabled && styles.disabled,
         style,
       ]}
@@ -51,24 +59,27 @@ export function Button({
       {loading ? (
         <ActivityIndicator
           size="small"
-          color={variant === 'primary' ? colors.textInverse : colors.primary}
+          color={
+            resolvedVariant === 'primary' || resolvedVariant === 'destructive'
+              ? colors.textInverse
+              : colors.primary
+          }
         />
       ) : (
-        <>
+        <View style={styles.content}>
           {icon}
           <Text
             style={[
-              styles.text,
               textSizeStyles[size],
-              variantTextStyles[variant],
+              variantTextStyles[resolvedVariant],
               icon ? { marginLeft: spacing.sm } : undefined,
             ]}
           >
             {title}
           </Text>
-        </>
+        </View>
       )}
-    </TouchableOpacity>
+    </PressableScale>
   );
 }
 
@@ -77,36 +88,41 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: borderRadius.lg,
+    borderRadius: borderRadius.md,
+  },
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   disabled: { opacity: 0.5 },
-  text: { fontWeight: '600' },
 });
 
 const sizeStyles: Record<Size, ViewStyle> = {
   sm: { paddingHorizontal: spacing.md, paddingVertical: spacing.sm, minHeight: 36 },
   md: { paddingHorizontal: spacing.lg, paddingVertical: spacing.md, minHeight: 44 },
-  lg: { paddingHorizontal: spacing.xl, paddingVertical: spacing.base, minHeight: 52 },
+  lg: { paddingHorizontal: spacing.xl, paddingVertical: spacing.base, minHeight: 52, borderRadius: borderRadius.lg },
 };
 
 const textSizeStyles: Record<Size, TextStyle> = {
-  sm: { fontSize: 13 },
-  md: { fontSize: 15 },
-  lg: { fontSize: 17 },
+  sm: { ...typography.buttonSm },
+  md: { ...typography.buttonMd },
+  lg: { ...typography.buttonLg },
 };
 
-const variantStyles: Record<Variant, ViewStyle> = {
+/** Primary uses midnight blue fill; accent for secondary hover/focus states */
+const variantStyles: Record<Exclude<Variant, 'danger'>, ViewStyle> = {
   primary: { backgroundColor: colors.primary },
-  secondary: { backgroundColor: colors.surfaceElevated },
-  destructive: { backgroundColor: '#DC2626' },
+  secondary: { backgroundColor: colors.surface },
+  destructive: { backgroundColor: colors.error },
   ghost: { backgroundColor: 'transparent' },
-  outline: { backgroundColor: 'transparent', borderWidth: 1, borderColor: colors.border },
+  outline: { backgroundColor: 'transparent', borderWidth: 1.5, borderColor: colors.border },
 };
 
-const variantTextStyles: Record<Variant, TextStyle> = {
+const variantTextStyles: Record<Exclude<Variant, 'danger'>, TextStyle> = {
   primary: { color: colors.textInverse },
   secondary: { color: colors.textPrimary },
-  destructive: { color: '#FFFFFF' },
-  ghost: { color: colors.primary },
+  destructive: { color: colors.textInverse },
+  ghost: { color: colors.accent },
   outline: { color: colors.textPrimary },
 };

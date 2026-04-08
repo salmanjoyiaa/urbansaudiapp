@@ -12,12 +12,14 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
-import { colors, spacing, borderRadius, typography } from '@/theme';
+import { colors, alpha, spacing, borderRadius, typography, ambientShadow } from '@/theme';
 import { DateStrip } from '@/components/visits/DateStrip';
 import { StatusChips } from '@/components/visits/StatusChips';
 import { VisitCard } from '@/components/visits/VisitCard';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
+import { AppEmptyState } from '@/components/ui/AppEmptyState';
+import { PressableScale } from '@/components/ui/PressableScale';
 import { SendDaySummarySheet } from '@/components/visits/SendDaySummarySheet';
 import { SkeletonCard } from '@/components/ui/Skeleton';
 import { useVisitFilterStore } from '@/store/visitFilterStore';
@@ -92,15 +94,13 @@ export default function VisitsScreen() {
   ), [handleVisitPress]);
 
   const renderEmpty = () => (
-    <View style={styles.emptyContainer}>
-      <Ionicons name="calendar-outline" size={48} color={colors.textMuted} />
-      <Text style={styles.emptyTitle}>No visits</Text>
-      <Text style={styles.emptySubtitle}>
-        {statusFilter
-          ? `No ${VISIT_STATUS_LABELS[statusFilter].toLowerCase()} visits for ${formatDate(selectedDate)}`
-          : `No visits scheduled for ${formatDate(selectedDate)}`}
-      </Text>
-    </View>
+    <AppEmptyState
+      icon="calendar-outline"
+      title="No visits"
+      subtitle={statusFilter
+        ? `No ${VISIT_STATUS_LABELS[statusFilter].toLowerCase()} visits for ${formatDate(selectedDate)}`
+        : `No visits scheduled for ${formatDate(selectedDate)}`}
+    />
   );
 
   return (
@@ -121,7 +121,7 @@ export default function VisitsScreen() {
       {/* Action Bar */}
       <View style={styles.actionBar}>
         {counters.pending > 0 && (
-          <TouchableOpacity
+          <PressableScale
             onPress={() => openAgentPicker('bulk')}
             style={styles.bulkButton}
           >
@@ -129,22 +129,22 @@ export default function VisitsScreen() {
             <Text style={styles.bulkButtonText}>
               Bulk Assign ({counters.pending})
             </Text>
-          </TouchableOpacity>
+          </PressableScale>
         )}
         {visits.length > 0 && (
-          <TouchableOpacity
+          <PressableScale
             onPress={() => setShowSendSummary(true)}
             style={styles.summaryButton}
           >
             <Ionicons name="send-outline" size={14} color={colors.success} />
             <Text style={styles.summaryButtonText}>Send Summary</Text>
-          </TouchableOpacity>
+          </PressableScale>
         )}
       </View>
 
       {/* Visit List */}
       {isLoading ? (
-        <View style={{ paddingHorizontal: spacing.base, gap: spacing.sm }}>
+        <View style={{ paddingHorizontal: spacing.base, gap: spacing.md }}>
           {[1, 2, 3, 4].map((i) => <SkeletonCard key={i} />)}
         </View>
       ) : (
@@ -157,9 +157,9 @@ export default function VisitsScreen() {
             <RefreshControl
               refreshing={isRefetching}
               onRefresh={refetch}
-              tintColor={colors.primary}
-              colors={[colors.primary]}
-              progressBackgroundColor={colors.surface}
+              tintColor={colors.secondary}
+              colors={[colors.secondary]}
+              progressBackgroundColor={colors.surfaceElevated}
             />
           }
           contentContainerStyle={visits.length === 0 ? { flex: 1 } : { paddingBottom: spacing['3xl'] }}
@@ -176,15 +176,48 @@ export default function VisitsScreen() {
         {selectedVisit && (
           <View style={styles.modalContainer}>
             <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>Visit Details</Text>
-              <TouchableOpacity onPress={() => setSelectedVisit(null)}>
-                <Ionicons name="close" size={24} color={colors.textPrimary} />
+              <View style={styles.modalHeaderTextWrap}>
+                <Text style={styles.modalEyebrow}>Visit detail</Text>
+                <Text style={styles.modalTitle}>{selectedVisit.properties?.title || 'Visit Details'}</Text>
+                <Text style={styles.modalSubtitle}>{selectedVisit.visitor_name}</Text>
+              </View>
+              <TouchableOpacity onPress={() => setSelectedVisit(null)} style={styles.closeButton}>
+                <Ionicons name="close" size={20} color={colors.textSecondary} />
               </TouchableOpacity>
+            </View>
+
+            <View style={styles.modalHero}>
+              <View style={styles.modalHeroTopRow}>
+                <Badge
+                  label={VISIT_STATUS_LABELS[selectedVisit.status as VisitStatus] || selectedVisit.status}
+                  status={selectedVisit.status as VisitStatus}
+                  dot
+                />
+                {selectedVisit.properties?.property_ref && (
+                  <Text style={styles.heroMetaText}>ID {selectedVisit.properties.property_ref}</Text>
+                )}
+              </View>
+              <Text style={styles.modalHeroTitle} numberOfLines={2}>
+                {selectedVisit.properties?.title || 'Unknown Property'}
+              </Text>
+              <Text style={styles.modalHeroSubtitle} numberOfLines={2}>
+                {selectedVisit.properties?.property_ref || 'Property location not provided'}
+              </Text>
+              <View style={styles.modalHeroMetaRow}>
+                <View style={styles.modalHeroMetaItem}>
+                  <Ionicons name="calendar-outline" size={14} color={colors.textInverse} />
+                  <Text style={styles.modalHeroMetaText}>{formatDate(selectedVisit.visit_date)}</Text>
+                </View>
+                <View style={styles.modalHeroMetaItem}>
+                  <Ionicons name="time-outline" size={14} color={colors.textInverse} />
+                  <Text style={styles.modalHeroMetaText}>{formatTime(selectedVisit.visit_time)}</Text>
+                </View>
+              </View>
             </View>
 
             <View style={styles.modalContent}>
               {/* Property */}
-              <View style={styles.detailSection}>
+              <View style={styles.detailCard}>
                 <Text style={styles.detailLabel}>PROPERTY</Text>
                 <Text style={styles.detailValue}>{selectedVisit.properties?.title || '—'}</Text>
                 {selectedVisit.properties?.property_ref && (
@@ -193,14 +226,14 @@ export default function VisitsScreen() {
               </View>
 
               {/* Visitor */}
-              <View style={styles.detailSection}>
+              <View style={styles.detailCard}>
                 <Text style={styles.detailLabel}>VISITOR</Text>
                 <Text style={styles.detailValue}>{selectedVisit.visitor_name}</Text>
                 <Text style={styles.detailSub}>{selectedVisit.visitor_phone} · {selectedVisit.visitor_email}</Text>
               </View>
 
               {/* Schedule */}
-              <View style={styles.detailSection}>
+              <View style={styles.detailCard}>
                 <Text style={styles.detailLabel}>SCHEDULE</Text>
                 <Text style={styles.detailValue}>
                   {formatDate(selectedVisit.visit_date)} · {formatTime(selectedVisit.visit_time)}
@@ -208,7 +241,7 @@ export default function VisitsScreen() {
               </View>
 
               {/* Status */}
-              <View style={styles.detailSection}>
+              <View style={styles.detailCard}>
                 <Text style={styles.detailLabel}>STATUS</Text>
                 <View style={{ flexDirection: 'row', gap: spacing.sm, flexWrap: 'wrap' }}>
                   <Badge
@@ -218,7 +251,7 @@ export default function VisitsScreen() {
                   {selectedVisit.visiting_status && (
                     <Badge
                       label={VISITING_STATUS_LABELS[selectedVisit.visiting_status] || selectedVisit.visiting_status}
-                      color={{ bg: colors.surfaceElevated, text: colors.textSecondary, border: colors.border }}
+                      color={{ bg: colors.surface, text: colors.textSecondary, border: colors.border }}
                     />
                   )}
                 </View>
@@ -226,7 +259,7 @@ export default function VisitsScreen() {
 
               {/* Agent */}
               {selectedVisit.visiting_agent && (
-                <View style={styles.detailSection}>
+                <View style={styles.detailCard}>
                   <Text style={styles.detailLabel}>VISITING AGENT</Text>
                   <Text style={styles.detailValue}>{selectedVisit.visiting_agent.full_name}</Text>
                   {selectedVisit.visiting_agent.phone && (
@@ -237,49 +270,52 @@ export default function VisitsScreen() {
 
               {/* Admin Notes */}
               {selectedVisit.admin_notes && (
-                <View style={styles.detailSection}>
+                <View style={styles.detailCard}>
                   <Text style={styles.detailLabel}>NOTES</Text>
                   <Text style={styles.detailSub}>{selectedVisit.admin_notes}</Text>
                 </View>
               )}
 
               {/* Quick Actions */}
-              <View style={styles.quickActions}>
-                {selectedVisit.visitor_phone && (
-                  <>
+              <View style={styles.quickActionsCard}>
+                <Text style={styles.detailLabel}>QUICK ACTIONS</Text>
+                <View style={styles.quickActions}>
+                  {selectedVisit.visitor_phone && (
+                    <>
+                      <TouchableOpacity
+                        style={styles.quickAction}
+                        onPress={() => Linking.openURL(`tel:${selectedVisit.visitor_phone}`)}
+                      >
+                        <Ionicons name="call-outline" size={20} color={colors.success} />
+                        <Text style={[styles.quickActionText, { color: colors.success }]}>Call</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={styles.quickAction}
+                        onPress={() => {
+                          const clean = selectedVisit.visitor_phone.replace(/\D/g, '');
+                          Linking.openURL(`https://wa.me/${clean}`);
+                        }}
+                      >
+                        <Ionicons name="logo-whatsapp" size={20} color={colors.whatsapp} />
+                        <Text style={[styles.quickActionText, { color: colors.whatsapp }]}>WhatsApp</Text>
+                      </TouchableOpacity>
+                    </>
+                  )}
+                  {selectedVisit.properties?.location_url && (
                     <TouchableOpacity
                       style={styles.quickAction}
-                      onPress={() => Linking.openURL(`tel:${selectedVisit.visitor_phone}`)}
+                      onPress={() => Linking.openURL(selectedVisit.properties!.location_url!)}
                     >
-                      <Ionicons name="call-outline" size={20} color={colors.success} />
-                      <Text style={[styles.quickActionText, { color: colors.success }]}>Call</Text>
+                      <Ionicons name="map-outline" size={20} color={colors.secondary} />
+                      <Text style={[styles.quickActionText, { color: colors.secondary }]}>Map</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity
-                      style={styles.quickAction}
-                      onPress={() => {
-                        const clean = selectedVisit.visitor_phone.replace(/\D/g, '');
-                        Linking.openURL(`https://wa.me/${clean}`);
-                      }}
-                    >
-                      <Ionicons name="logo-whatsapp" size={20} color="#25D366" />
-                      <Text style={[styles.quickActionText, { color: '#25D366' }]}>WhatsApp</Text>
-                    </TouchableOpacity>
-                  </>
-                )}
-                {selectedVisit.properties?.location_url && (
-                  <TouchableOpacity
-                    style={styles.quickAction}
-                    onPress={() => Linking.openURL(selectedVisit.properties!.location_url!)}
-                  >
-                    <Ionicons name="map-outline" size={20} color={colors.info} />
-                    <Text style={[styles.quickActionText, { color: colors.info }]}>Map</Text>
-                  </TouchableOpacity>
-                )}
+                  )}
+                </View>
               </View>
             </View>
 
             {/* Action Buttons */}
-            <View style={styles.modalActions}>
+            <View style={styles.modalActionsDock}>
               {selectedVisit.status === 'pending' && (
                 <Button
                   title="Assign Agent"
@@ -336,22 +372,26 @@ export default function VisitsScreen() {
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalHeader}>
-            <Text style={styles.modalTitle}>
-              {agentPickerAction === 'bulk' ? 'Bulk Assign — Select Agent' : 'Assign Visiting Agent'}
-            </Text>
-            <TouchableOpacity onPress={() => setShowAgentPicker(false)}>
-              <Ionicons name="close" size={24} color={colors.textPrimary} />
+            <View style={styles.modalHeaderTextWrap}>
+              <Text style={styles.modalEyebrow}>Select agent</Text>
+              <Text style={styles.modalTitle}>
+                {agentPickerAction === 'bulk' ? 'Bulk Assign — Select Agent' : 'Assign Visiting Agent'}
+              </Text>
+            </View>
+            <TouchableOpacity onPress={() => setShowAgentPicker(false)} style={styles.closeButton}>
+              <Ionicons name="close" size={20} color={colors.textSecondary} />
             </TouchableOpacity>
           </View>
           <FlatList
             data={agents || []}
             keyExtractor={(item) => item.id}
-            contentContainerStyle={{ padding: spacing.base }}
+            contentContainerStyle={{ padding: spacing.base, gap: spacing.md }}
             ListEmptyComponent={
-              <View style={styles.emptyContainer}>
-                <Text style={styles.emptyTitle}>No visiting agents</Text>
-                <Text style={styles.emptySubtitle}>No approved visiting agents found</Text>
-              </View>
+              <AppEmptyState
+                icon="people-outline"
+                title="No visiting agents"
+                subtitle="No approved visiting agents found."
+              />
             }
             renderItem={({ item }: { item: VisitingAgentOption }) => (
               <TouchableOpacity
@@ -374,7 +414,7 @@ export default function VisitsScreen() {
                 }}
               >
                 <View style={styles.agentAvatar}>
-                  <Ionicons name="person-circle" size={36} color={colors.primary} />
+                  <Ionicons name="person-circle" size={40} color={colors.secondary} />
                 </View>
                 <View style={styles.agentInfo}>
                   <Text style={styles.agentName}>{item.name}</Text>
@@ -418,7 +458,7 @@ const styles = StyleSheet.create({
     borderRadius: borderRadius.full,
     backgroundColor: colors.primaryLight,
     borderWidth: 1,
-    borderColor: colors.primary,
+    borderColor: colors.primaryBorder,
   },
   bulkButtonText: {
     fontSize: 13,
@@ -432,30 +472,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
     borderRadius: borderRadius.full,
-    backgroundColor: 'rgba(52, 211, 153, 0.12)',
+    backgroundColor: colors.successLight,
     borderWidth: 1,
-    borderColor: colors.success,
+    borderColor: alpha(colors.success, 0.18),
   },
   summaryButtonText: {
     fontSize: 13,
     fontWeight: '600',
     color: colors.success,
-  },
-  emptyContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.md,
-    paddingVertical: spacing['5xl'],
-  },
-  emptyTitle: {
-    ...typography.h3,
-    color: colors.textSecondary,
-  },
-  emptySubtitle: {
-    ...typography.bodySmall,
-    color: colors.textMuted,
-    textAlign: 'center',
   },
   // Modal styles
   modalContainer: {
@@ -467,21 +491,95 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: spacing.base,
-    paddingVertical: spacing.md,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.border,
+    paddingTop: spacing['2xl'],
+    paddingBottom: spacing.base,
+  },
+  modalHeaderTextWrap: {
+    flex: 1,
+    paddingRight: spacing.md,
+  },
+  modalEyebrow: {
+    ...typography.label,
+    color: colors.textMuted,
+    marginBottom: 2,
   },
   modalTitle: {
     ...typography.h3,
     color: colors.textPrimary,
   },
+  modalSubtitle: {
+    ...typography.bodySmall,
+    color: colors.textSecondary,
+    marginTop: 2,
+  },
+  closeButton: {
+    width: 36,
+    height: 36,
+    borderRadius: borderRadius.full,
+    backgroundColor: colors.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalHero: {
+    marginHorizontal: spacing.base,
+    marginBottom: spacing.base,
+    padding: spacing.base,
+    borderRadius: borderRadius.xl,
+    backgroundColor: colors.primary,
+    ...ambientShadow,
+  },
+  modalHeroTopRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.sm,
+    marginBottom: spacing.sm,
+  },
+  heroMetaText: {
+    ...typography.caption,
+    color: alpha(colors.textInverse, 0.7),
+  },
+  modalHeroTitle: {
+    ...typography.h2,
+    color: colors.textInverse,
+  },
+  modalHeroSubtitle: {
+    ...typography.bodySmall,
+    color: alpha(colors.textInverse, 0.72),
+    marginTop: spacing.xs,
+  },
+  modalHeroMetaRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
+    marginTop: spacing.md,
+  },
+  modalHeroMetaItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.xs,
+    borderRadius: borderRadius.full,
+    backgroundColor: alpha(colors.textInverse, 0.10),
+  },
+  modalHeroMetaText: {
+    ...typography.caption,
+    color: colors.textInverse,
+  },
   modalContent: {
     flex: 1,
-    padding: spacing.base,
+    paddingHorizontal: spacing.base,
     gap: spacing.lg,
   },
-  detailSection: {
+  detailCard: {
     gap: spacing.xs,
+    padding: spacing.base,
+    borderRadius: borderRadius.xl,
+    backgroundColor: colors.card,
+    borderWidth: 1,
+    borderColor: colors.borderLight,
+    ...ambientShadow,
   },
   detailLabel: {
     ...typography.label,
@@ -499,42 +597,52 @@ const styles = StyleSheet.create({
     ...typography.bodySmall,
     color: colors.textSecondary,
   },
+  quickActionsCard: {
+    gap: spacing.xs,
+    padding: spacing.base,
+    borderRadius: borderRadius.xl,
+    backgroundColor: colors.surfaceElevated,
+    borderWidth: 1,
+    borderColor: colors.borderLight,
+    ...ambientShadow,
+  },
   quickActions: {
     flexDirection: 'row',
     gap: spacing.base,
+    flexWrap: 'wrap',
     marginTop: spacing.sm,
   },
   quickAction: {
     alignItems: 'center',
     gap: 4,
     paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.md,
+    paddingHorizontal: spacing.base,
     backgroundColor: colors.surface,
     borderRadius: borderRadius.md,
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: colors.borderLight,
   },
   quickActionText: {
     fontSize: 11,
     fontWeight: '600',
   },
-  modalActions: {
+  modalActionsDock: {
     padding: spacing.base,
     gap: spacing.sm,
+    paddingBottom: spacing['2xl'],
     borderTopWidth: 1,
-    borderTopColor: colors.border,
+    borderTopColor: colors.borderLight,
+    backgroundColor: colors.background,
   },
   // Agent picker
   agentRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: spacing.md,
+    padding: spacing.base,
     backgroundColor: colors.card,
-    borderRadius: borderRadius.lg,
-    borderWidth: 1,
-    borderColor: colors.border,
-    marginBottom: spacing.sm,
+    borderRadius: borderRadius.xl,
     gap: spacing.md,
+    ...ambientShadow,
   },
   agentAvatar: {},
   agentInfo: {

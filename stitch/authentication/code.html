@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#cebdff",
+              "on-primary": "#ffffff",
+              "surface-dim": "#ced9ff",
+              "inverse-on-surface": "#eef0ff",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#e8ddff",
+              "tertiary-container": "#34008b",
+              "outline-variant": "#c5c6d0",
+              "surface": "#faf8ff",
+              "primary-fixed-dim": "#b5c5f9",
+              "on-tertiary-fixed-variant": "#4f29ab",
+              "tertiary": "#1d0055",
+              "on-tertiary-fixed": "#21005e",
+              "error": "#ba1a1a",
+              "secondary-fixed": "#dbe1ff",
+              "surface-container-highest": "#dae2ff",
+              "inverse-surface": "#1e2f59",
+              "on-surface-variant": "#45464f",
+              "on-surface": "#051943",
+              "surface-bright": "#faf8ff",
+              "on-primary-fixed": "#051943",
+              "primary-fixed": "#dae2ff",
+              "secondary": "#1952cc",
+              "secondary-container": "#3d6de6",
+              "primary": "#021540",
+              "surface-tint": "#4d5d8a",
+              "outline": "#757780",
+              "surface-container-low": "#f2f3ff",
+              "on-tertiary": "#ffffff",
+              "on-background": "#051943",
+              "secondary-fixed-dim": "#b4c5ff",
+              "on-primary-container": "#8393c3",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#9f7eff",
+              "background": "#faf8ff",
+              "on-secondary-fixed-variant": "#003ea8",
+              "surface-container": "#eaedff",
+              "on-error": "#ffffff",
+              "inverse-primary": "#b5c5f9",
+              "surface-container-high": "#e2e7ff",
+              "surface-variant": "#dae2ff",
+              "error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#354571",
+              "primary-container": "#1a2b55",
+              "on-secondary-fixed": "#00174b",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#fefcff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .ghost-border {
+        border: 1px solid rgba(197, 198, 208, 0.15);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<main class="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
+<!-- Subtle Atmospheric Background Elements -->
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-secondary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="w-full max-w-md space-y-12 relative z-10">
+<!-- Branding Header -->
+<div class="flex flex-col items-center text-center space-y-4">
+<div class="w-16 h-16 bg-primary flex items-center justify-center rounded-xl mb-2 shadow-xl shadow-primary/10">
+<span class="material-symbols-outlined text-surface text-3xl" data-icon="concierge_bell" style="">doorbell</span>
+</div>
+<h1 class="font-headline text-3xl font-extrabold tracking-tight text-primary" style="">
+                    UrbanRealEstateSaudi</h1>
+<p class="text-on-surface-variant font-body text-sm tracking-wide max-w-[280px] leading-relaxed" style="">
+                    Exclusively curated for seamless management of your premium property portfolio.
+                </p>
+</div>
+<!-- Login Card / Tonal Container -->
+<div class="bg-surface-container-lowest glass-effect p-8 md:p-10 rounded-[2rem] ghost-border shadow-[0_24px_48px_rgba(5,25,67,0.04)]">
+<form class="space-y-6">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="block font-label text-[11px] font-semibold uppercase tracking-[0.15em] text-on-surface-variant px-1" for="email" style="">
+                            Email Address
+                        </label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 text-on-surface font-body text-sm focus:ring-2 focus:ring-secondary/20 transition-all duration-200 placeholder:text-outline/40" id="email" name="email" placeholder="name@luxury-estate.com" type="email">
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="block font-label text-[11px] font-semibold uppercase tracking-[0.15em] text-on-surface-variant" for="password" style="">
+                                Password
+                            </label>
+<a class="font-label text-[10px] font-bold text-secondary uppercase tracking-widest hover:text-primary transition-colors" href="#" style="">
+                                Forgot?
+                            </a>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 text-on-surface font-body text-sm focus:ring-2 focus:ring-secondary/20 transition-all duration-200 placeholder:text-outline/40" id="password" name="password" placeholder="••••••••" type="password">
+</div>
+</div>
+<!-- CTA Button -->
+<div class="pt-4">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-surface font-headline font-bold py-4 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 text-sm tracking-wide" type="submit" style="">
+                            Sign In to Dashboard
+                        </button>
+</div>
+</form>
+<!-- Footer Links Inside Card -->
+<div class="mt-8 flex items-center justify-center space-x-2">
+<span class="text-on-surface-variant text-xs" style="">New to the platform?</span>
+<a class="text-secondary text-xs font-bold hover:underline" href="#" style="">Request Access</a>
+</div>
+</div>
+<!-- Global Footer Info -->
+<div class="flex flex-col items-center space-y-6">
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-2 text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined text-sm" data-icon="lock" style="">lock</span>
+<span class="text-[10px] font-label font-medium uppercase tracking-widest" style="">End-to-End Encrypted</span>
+</div>
+<div class="flex items-center space-x-2 text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user" style="">verified_user</span>
+<span class="text-[10px] font-label font-medium uppercase tracking-widest" style="">Authorized Access</span>
+</div>
+</div>
+<p class="text-[10px] text-on-surface-variant/40 font-label tracking-widest text-center" style="">
+                    © 2024 THE DIGITAL CONCIERGE. ALL RIGHTS RESERVED.
+                </p>
+</div>
+</div>
+</main>
+<!-- Decorative Image for Context (Luxury Interior) - Hidden on smaller screens for focus -->
+<div class="hidden lg:block fixed right-10 bottom-10 w-64 h-80 rounded-[2.5rem] overflow-hidden ghost-border shadow-2xl rotate-3 opacity-40 hover:rotate-0 transition-all duration-700">
+<img class="w-full h-full object-cover" data-alt="Modern minimalist luxury apartment interior with floor-to-ceiling windows, soft grey marble textures, and warm sunset glow lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRvRjEfiR_aleMH7gjhdpvAv1E3f5xLXaqqEBWgw0kGNLIEHNi-HeTwPlu6Kzb7HBdGMfYzsTEKwi-3W_M9kDTvuqXyJq4Z7W8CcrBbFpCdyKama2Esv7Gk5RYrXjfEI84AYJ757HhAhGTHgJHEvc75tkyq2gAcS8o--lGLpPbSeoW6Ne1_RFMZPcjIRzqOK5E3HUcZj1b4myG_oNYpdge771hcb6_9AeREWHRysEyq5iKiAqBEe4pBw_knuq2mtNj2FTLLUOoo-ZN" style="">
+</div>
+</body></html>

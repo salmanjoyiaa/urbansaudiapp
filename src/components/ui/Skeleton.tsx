@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Animated, StyleSheet, ViewStyle } from 'react-native';
-import { colors, borderRadius, spacing } from '@/theme';
+import { colors, borderRadius, spacing, shadows } from '@/theme';
 
 interface SkeletonProps {
   width: number | string;
@@ -9,24 +9,23 @@ interface SkeletonProps {
   style?: ViewStyle;
 }
 
+/**
+ * Pulsing skeleton placeholder with smooth opacity animation.
+ * Uses warm shimmer color to match the Midnight Concierge palette.
+ */
 export function Skeleton({ width, height, borderRadiusOverride, style }: SkeletonProps) {
-  const shimmerAnim = useRef(new Animated.Value(0)).current;
+  const shimmerAnim = useRef(new Animated.Value(0.35)).current;
 
   useEffect(() => {
     const anim = Animated.loop(
       Animated.sequence([
-        Animated.timing(shimmerAnim, { toValue: 1, duration: 1000, useNativeDriver: true }),
-        Animated.timing(shimmerAnim, { toValue: 0, duration: 1000, useNativeDriver: true }),
+        Animated.timing(shimmerAnim, { toValue: 0.7, duration: 900, useNativeDriver: true }),
+        Animated.timing(shimmerAnim, { toValue: 0.35, duration: 900, useNativeDriver: true }),
       ])
     );
     anim.start();
     return () => anim.stop();
   }, [shimmerAnim]);
-
-  const opacity = shimmerAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0.3, 0.7],
-  });
 
   return (
     <Animated.View
@@ -36,7 +35,7 @@ export function Skeleton({ width, height, borderRadiusOverride, style }: Skeleto
           height,
           borderRadius: borderRadiusOverride ?? borderRadius.md,
           backgroundColor: colors.shimmer,
-          opacity,
+          opacity: shimmerAnim,
         },
         style,
       ]}
@@ -44,14 +43,34 @@ export function Skeleton({ width, height, borderRadiusOverride, style }: Skeleto
   );
 }
 
+/** Skeleton matching a VisitCard layout */
 export function SkeletonCard({ style }: { style?: ViewStyle }) {
   return (
     <View style={[skeletonStyles.card, style]}>
-      <Skeleton width="40%" height={14} />
+      <View style={skeletonStyles.topRow}>
+        <Skeleton width="55%" height={16} />
+        <Skeleton width={56} height={24} borderRadiusOverride={borderRadius.sm} />
+      </View>
       <View style={{ height: spacing.sm }} />
-      <Skeleton width="70%" height={20} />
+      <Skeleton width="70%" height={14} />
       <View style={{ height: spacing.sm }} />
-      <Skeleton width="50%" height={12} />
+      <View style={skeletonStyles.bottomRow}>
+        <Skeleton width={72} height={22} borderRadiusOverride={borderRadius.full} />
+        <Skeleton width={90} height={14} />
+      </View>
+    </View>
+  );
+}
+
+/** Skeleton matching a StatCard layout */
+export function SkeletonStatCard({ style }: { style?: ViewStyle }) {
+  return (
+    <View style={[skeletonStyles.statCard, style]}>
+      <Skeleton width={40} height={40} borderRadiusOverride={borderRadius.md} />
+      <View style={{ height: spacing.md }} />
+      <Skeleton width="40%" height={24} />
+      <View style={{ height: spacing.xs }} />
+      <Skeleton width="70%" height={12} />
     </View>
   );
 }
@@ -59,9 +78,27 @@ export function SkeletonCard({ style }: { style?: ViewStyle }) {
 const skeletonStyles = StyleSheet.create({
   card: {
     backgroundColor: colors.card,
-    borderRadius: borderRadius.lg,
-    borderWidth: 1,
-    borderColor: colors.border,
+    borderRadius: borderRadius.xl,
     padding: spacing.base,
+    ...shadows.soft,
+    marginHorizontal: spacing.base,
+    marginBottom: spacing.md,
+  },
+  topRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  bottomRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  statCard: {
+    backgroundColor: colors.card,
+    borderRadius: borderRadius.xl,
+    padding: spacing.base,
+    ...shadows.soft,
+    flex: 1,
   },
 });

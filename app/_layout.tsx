@@ -1,15 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Slot, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useFonts, Outfit_400Regular, Outfit_600SemiBold, Outfit_700Bold } from '@expo-google-fonts/outfit';
+import { DMSans_400Regular, DMSans_500Medium, DMSans_600SemiBold, DMSans_700Bold } from '@expo-google-fonts/dm-sans';
+import * as SplashScreen from 'expo-splash-screen';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withSequence,
+  withDelay,
+  Easing,
+  runOnJS,
+} from 'react-native-reanimated';
 import { useAuthStore } from '@/store/authStore';
 import { supabase } from '@/services/supabase';
 import { getProfile } from '@/services/auth';
 import { registerForPushNotifications, addNotificationResponseListener } from '@/services/pushNotifications';
 import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
-import { colors } from '@/theme';
+import { colors, typography } from '@/theme';
+
+// Keep splash screen visible until fonts are loaded
+SplashScreen.preventAutoHideAsync();
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,6 +34,44 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+/**
+ * Branded loading screen — replaces the bland ActivityIndicator.
+ * Shows app name with warm amber accent bar, pulsing animation.
+ */
+function BrandedSplash() {
+  const opacity = useSharedValue(0);
+  const barWidth = useSharedValue(0);
+  const scale = useSharedValue(0.9);
+
+  useEffect(() => {
+    opacity.value = withTiming(1, { duration: 600, easing: Easing.out(Easing.quad) });
+    scale.value = withTiming(1, { duration: 600, easing: Easing.out(Easing.quad) });
+    barWidth.value = withDelay(400, withTiming(64, { duration: 800, easing: Easing.out(Easing.quad) }));
+  }, []);
+
+  const containerStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+    transform: [{ scale: scale.value }],
+  }));
+
+  const barStyle = useAnimatedStyle(() => ({
+    width: barWidth.value,
+  }));
+
+  return (
+    <View style={styles.splashContainer}>
+      <Animated.View style={[styles.splashContent, containerStyle]}>
+        <View style={styles.splashIcon}>
+          <Text style={styles.splashIconText}>U</Text>
+        </View>
+        <Text style={styles.splashTitle}>UrbanSaudi</Text>
+        <Text style={styles.splashSubtitle}>Admin Dashboard</Text>
+        <Animated.View style={[styles.splashBar, barStyle]} />
+      </Animated.View>
+    </View>
+  );
+}
 
 function AuthGate() {
   const router = useRouter();
@@ -101,22 +154,38 @@ function AuthGate() {
   }, [isAuthenticated, isLoading, segments]);
 
   if (isLoading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={colors.primary} />
-      </View>
-    );
+    return <BrandedSplash />;
   }
 
   return <Slot />;
 }
 
 export default function RootLayout() {
+  const [fontsLoaded] = useFonts({
+    Outfit_400Regular,
+    Outfit_600SemiBold,
+    Outfit_700Bold,
+    DMSans_400Regular,
+    DMSans_500Medium,
+    DMSans_600SemiBold,
+    DMSans_700Bold,
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return <BrandedSplash />;
+  }
+
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <QueryClientProvider client={queryClient}>
         <ErrorBoundary>
-          <StatusBar style="light" />
+          <StatusBar style="dark" />
           <AuthGate />
         </ErrorBoundary>
       </QueryClientProvider>
@@ -125,10 +194,48 @@ export default function RootLayout() {
 }
 
 const styles = StyleSheet.create({
-  loadingContainer: {
+  splashContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.background,
+  },
+  splashContent: {
+    alignItems: 'center',
+    gap: 8,
+  },
+  splashIcon: {
+    width: 72,
+    height: 72,
+    borderRadius: 20,
+    backgroundColor: colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 16,
+  },
+  splashIconText: {
+    fontSize: 32,
+    fontWeight: '800',
+    color: colors.accent,
+    letterSpacing: -1,
+  },
+  splashTitle: {
+    fontSize: 28,
+    fontWeight: '700',
+    color: colors.textPrimary,
+    letterSpacing: -0.5,
+  },
+  splashSubtitle: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: colors.textMuted,
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
+  },
+  splashBar: {
+    height: 3,
+    borderRadius: 2,
+    backgroundColor: colors.accent,
+    marginTop: 16,
   },
 });

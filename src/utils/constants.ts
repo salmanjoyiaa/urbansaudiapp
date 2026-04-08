@@ -1,6 +1,7 @@
-import type { VisitStatus, StatusKey } from '@/types';
 import { colors } from '@/theme';
+import type { VisitStatus, VisitingStatus } from '@/types';
 
+/** Human-readable labels for visit statuses */
 export const VISIT_STATUS_LABELS: Record<VisitStatus, string> = {
   pending: 'Pending',
   assigned: 'Assigned',
@@ -9,6 +10,7 @@ export const VISIT_STATUS_LABELS: Record<VisitStatus, string> = {
   completed: 'Completed',
 };
 
+/** Ionicons icon names for each visit status */
 export const VISIT_STATUS_ICONS: Record<VisitStatus, string> = {
   pending: 'time-outline',
   assigned: 'person-outline',
@@ -17,12 +19,9 @@ export const VISIT_STATUS_ICONS: Record<VisitStatus, string> = {
   completed: 'ribbon-outline',
 };
 
-export function getStatusColors(status: VisitStatus) {
-  return colors.status[status as StatusKey] || colors.status.pending;
-}
-
-export const VISITING_STATUS_LABELS: Record<string, string> = {
-  view: 'View Scheduled',
+/** Human-readable labels for visiting (agent-side) statuses */
+export const VISITING_STATUS_LABELS: Record<VisitingStatus, string> = {
+  view: 'View',
   contact_done: 'Contact Done',
   customer_confirmed: 'Customer Confirmed',
   customer_arrived: 'Customer Arrived',
@@ -35,4 +34,13 @@ export const VISITING_STATUS_LABELS: Record<string, string> = {
   reschedule: 'Rescheduled',
 };
 
-export const SAUDI_TIME_ZONE = 'Asia/Riyadh';
+/** Returns { bg, text, border } color set for a given visit status */
+export function getStatusColors(status: VisitStatus) {
+  return (
+    colors.status[status as keyof typeof colors.status] ?? {
+      bg: colors.surfaceElevated,
+      text: colors.textSecondary,
+      border: colors.border,
+    }
+  );
+}

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#cebdff",
+              "on-primary": "#ffffff",
+              "surface-dim": "#ced9ff",
+              "inverse-on-surface": "#eef0ff",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#e8ddff",
+              "tertiary-container": "#34008b",
+              "outline-variant": "#c5c6d0",
+              "surface": "#faf8ff",
+              "primary-fixed-dim": "#b5c5f9",
+              "on-tertiary-fixed-variant": "#4f29ab",
+              "tertiary": "#1d0055",
+              "on-tertiary-fixed": "#21005e",
+              "error": "#ba1a1a",
+              "secondary-fixed": "#dbe1ff",
+              "surface-container-highest": "#dae2ff",
+              "inverse-surface": "#1e2f59",
+              "on-surface-variant": "#45464f",
+              "on-surface": "#051943",
+              "surface-bright": "#faf8ff",
+              "on-primary-fixed": "#051943",
+              "primary-fixed": "#dae2ff",
+              "secondary": "#1952cc",
+              "secondary-container": "#3d6de6",
+              "primary": "#021540",
+              "surface-tint": "#4d5d8a",
+              "outline": "#757780",
+              "surface-container-low": "#f2f3ff",
+              "on-tertiary": "#ffffff",
+              "on-background": "#051943",
+              "secondary-fixed-dim": "#b4c5ff",
+              "on-primary-container": "#8393c3",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#9f7eff",
+              "background": "#faf8ff",
+              "on-secondary-fixed-variant": "#003ea8",
+              "surface-container": "#eaedff",
+              "on-error": "#ffffff",
+              "inverse-primary": "#b5c5f9",
+              "surface-container-high": "#e2e7ff",
+              "surface-variant": "#dae2ff",
+              "error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#354571",
+              "primary-container": "#1a2b55",
+              "on-secondary-fixed": "#00174b",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#fefcff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #faf8ff;
+      }
+      .headline-font {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-[#faf8ff] dark:bg-slate-950 sticky top-0 z-40 transition-all duration-300">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-screen-xl mx-auto">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border-2 border-surface-container-high">
+<img alt="Agent Profile" class="w-full h-full object-cover" data-alt="professional portrait of a luxury concierge agent in a tailored navy suit with a friendly and composed expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU1tAr9JLay1gp0phDGjQReVnuNtZzNcb0-W3CISLSy-YEZf_L0qtRWwg5nCkiruS8Gp3gFxjB2PHbJUMM2HNlCacKvspIsFaanA0ptZYGecSLmuiPeYcVsYSTglmrqZfhKUSk0xP2AYP7EVKUTT3k4Yw5noD0Uasdb-q-FIdsrji2V9HKpRELL8k30czU14O99IrnSgta7MOfNtctHtMAMsR_FdQfAkZVC9BaaIlZqiIv5nuaZgmnSG8J8m5my1zjja-d4W9cwqXy"/>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-[#021540] dark:text-blue-200 headline-font">The Digital Concierge</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors text-slate-500">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-screen-xl mx-auto px-6 pt-4 space-y-8">
+<!-- Search and Filter Section -->
+<section class="space-y-6">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-on-surface focus:ring-2 focus:ring-secondary/20 transition-all placeholder:text-outline/60" placeholder="Search visits or properties..." type="text"/>
+</div>
+<!-- Status Chips (Horizontal Scrollable) -->
+<div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-primary text-on-primary text-sm font-semibold tracking-wide transition-transform active:scale-95">All Visits</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-[#FFF7E6] text-[#B26B00] text-sm font-medium border border-[#FFD999]/30 hover:bg-[#FFD999]/20 transition-colors">Pending</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-secondary-container/10 text-secondary text-sm font-medium border border-secondary/10 hover:bg-secondary-container/20 transition-colors">Assigned</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-[#E6F9EE] text-[#1E8548] text-sm font-medium border border-[#2CC763]/20 hover:bg-[#2CC763]/10 transition-colors">Confirmed</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-sm font-medium hover:bg-surface-container-highest transition-colors">Completed</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full bg-error-container/30 text-error text-sm font-medium border border-error/10 hover:bg-error-container/50 transition-colors">Cancelled</button>
+</div>
+</section>
+<!-- Visits List - Bento/Editorial Cards -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Item 1: Pending -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(5,25,67,0.04)] hover:shadow-[0_8px_30px_rgba(5,25,67,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<span class="text-[10px] uppercase tracking-widest font-bold text-outline">Visit Request</span>
+<h3 class="text-lg font-bold text-primary headline-font leading-tight">Skyline Penthouse 402</h3>
+</div>
+<span class="px-3 py-1 rounded-full bg-[#FFF7E6] text-[#B26B00] text-[11px] font-bold uppercase tracking-tighter">Pending</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-outline-variant/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-medium text-on-surface-variant">Oct 24, 2023</span>
+</div>
+<div class="flex items-center gap-2 border-l border-outline-variant/10 pl-4">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="schedule">schedule</span>
+<span class="text-sm font-medium text-on-surface-variant">10:30 AM</span>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a professional male real estate agent smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLGuhkIqWvvsVExnDVaBULte4GgZsCK1nmCBm-P37kfjXGSt4uLwmfOMvYDW1BxJBi7_sQBH67HLoJGO_bRNw4zE1r8KEpDRlI6fMXZO_3P9VWVK7osiB_fx7JQX0dKMK81lCcSdTZBPgzfxeWS7Hvkb7JdlGZvFA5e9xB0KIJsVvxOWVyGJuLr243YCRl6glRYVTM4ONnLxCcJj7ZJAkBmzA30856ACiL97C1MCijEGFabi6TQ_ILTlmN3jUiPRgX68i0RsRIXaf7"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-primary text-[10px] flex items-center justify-center text-white font-bold">+2</div>
+</div>
+<button class="text-secondary text-sm font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Details <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Item 2: Confirmed -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(5,25,67,0.04)] hover:shadow-[0_8px_30px_rgba(5,25,67,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<span class="text-[10px] uppercase tracking-widest font-bold text-outline">Tour Confirmed</span>
+<h3 class="text-lg font-bold text-primary headline-font leading-tight">Azure Bay Residence</h3>
+</div>
+<span class="px-3 py-1 rounded-full bg-[#E6F9EE] text-[#1E8548] text-[11px] font-bold uppercase tracking-tighter">Confirmed</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-outline-variant/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-medium text-on-surface-variant">Oct 25, 2023</span>
+</div>
+<div class="flex items-center gap-2 border-l border-outline-variant/10 pl-4">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="schedule">schedule</span>
+<span class="text-sm font-medium text-on-surface-variant">02:00 PM</span>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+</div>
+<span class="text-xs font-medium text-on-surface-variant">Agent Assigned</span>
+</div>
+<button class="text-secondary text-sm font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Manage <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Item 3: Assigned -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(5,25,67,0.04)] hover:shadow-[0_8px_30px_rgba(5,25,67,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<span class="text-[10px] uppercase tracking-widest font-bold text-outline">Maintenance</span>
+<h3 class="text-lg font-bold text-primary headline-font leading-tight">Villa Mar Vista</h3>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary-container/10 text-secondary text-[11px] font-bold uppercase tracking-tighter">Assigned</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-outline-variant/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-medium text-on-surface-variant">Oct 28, 2023</span>
+</div>
+<div class="flex items-center gap-2 border-l border-outline-variant/10 pl-4">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="schedule">schedule</span>
+<span class="text-sm font-medium text-on-surface-variant">09:00 AM</span>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-center">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional female property manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiyVERv01vgAdbZAKkNChB1bvK93-f3mPB6uKIRVHLtF8oNWnZF6vYEFbHCyIYZFzMJE9XsTcYZ09Khl_YexJXJAgBUOFcqhRodbFBAsx8TkMkgbtSInQJENEVFqByeXWFDd0kvDIa5dxMSiazQiNWv3zlRTpvPjiLkDHSAdrdhCTs15YXwYGTXDXhZg8CpjpkzHECkeogVwH911avYPcwirkT8Yc4zP20fE1vCs0khfJhSLknbP2f3f28p6GGol9yQRcV8pc1MVF0"/>
+</div>
+</div>
+<button class="text-secondary text-sm font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Track <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Item 4: Cancelled -->
+<div class="group bg-surface-container-low/40 p-5 rounded-2xl border border-outline-variant/5">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1 opacity-50">
+<span class="text-[10px] uppercase tracking-widest font-bold text-outline">Open House</span>
+<h3 class="text-lg font-bold text-primary headline-font leading-tight">The Heritage Estate</h3>
+</div>
+<span class="px-3 py-1 rounded-full bg-error-container/20 text-error text-[11px] font-bold uppercase tracking-tighter">Cancelled</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-outline-variant/10 opacity-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-medium text-on-surface-variant">Oct 20, 2023</span>
+</div>
+</div>
+<div class="mt-4">
+<p class="text-xs text-outline italic">Reason: Weather constraints</p>
+</div>
+</div>
+<!-- Item 5: Pending -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(5,25,67,0.04)] hover:shadow-[0_8px_30px_rgba(5,25,67,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="space-y-1">
+<span class="text-[10px] uppercase tracking-widest font-bold text-outline">Valuation Visit</span>
+<h3 class="text-lg font-bold text-primary headline-font leading-tight">Modern Loft 8B</h3>
+</div>
+<span class="px-3 py-1 rounded-full bg-[#FFF7E6] text-[#B26B00] text-[11px] font-bold uppercase tracking-tighter">Pending</span>
+</div>
+<div class="flex items-center gap-4 py-3 border-y border-outline-variant/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-medium text-on-surface-variant">Nov 02, 2023</span>
+</div>
+<div class="flex items-center gap-2 border-l border-outline-variant/10 pl-4">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="schedule">schedule</span>
+<span class="text-sm font-medium text-on-surface-variant">03:45 PM</span>
+</div>
+</div>
+<div class="mt-4 flex justify-end">
+<button class="text-secondary text-sm font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        Details <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50">
+<div class="bg-[#faf8ff]/70 dark:bg-slate-950/70 backdrop-blur-xl shadow-[0_-4px_24px_rgba(5,25,67,0.06)] border-t border-slate-200/15 dark:border-slate-800/15">
+<div class="max-w-screen-xl mx-auto flex justify-around items-center px-4 pb-6 pt-2 h-20">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1.5 hover:text-[#1952cc] dark:hover:text-blue-300 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="pending_actions">pending_actions</span>
+<span class="text-[11px] font-medium tracking-wide">Pending</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1952cc] dark:text-blue-400 bg-[#f2f3ff] dark:bg-blue-900/30 rounded-xl px-4 py-1.5 scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="calendar_month" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="text-[11px] font-medium tracking-wide">All Visits</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-4 py-1.5 hover:text-[#1952cc] dark:hover:text-blue-300 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="text-[11px] font-medium tracking-wide">Profile</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Floating Action Button - Semantic Suppression Rule: suppressed on Details/Transactional, but kept here as it's a primary action screen for creating visits -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-gradient-to-tr from-primary to-primary-container text-white rounded-full shadow-2xl flex items-center justify-center active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>

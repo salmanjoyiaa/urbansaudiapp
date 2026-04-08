@@ -1,0 +1,800 @@
+﻿
+ΓÜá∩╕Å Detected that your app uses Expo Go for development, this is not recommended when building production apps.
+Learn more: https://expo.fyi/why-not-build-expo-go-for-production
+To suppress this warning, set EAS_BUILD_NO_EXPO_GO_WARNING=true.
+
+The field "cli.appVersionSource" is not set, but it will be required in the future. Learn more: https://docs.expo.dev/build-reference/app-versions/
+Resolved "production" environment for the build. Learn more: https://docs.expo.dev/eas/environment-variables/#setting-the-environment-for-your-builds
+No environment variables with visibility "Plain text" and "Sensitive" found for the "production" environment on EAS.
+
+
+
+The field "cli.appVersionSource" is not set, but it will be required in the future. Learn more: https://docs.expo.dev/build-reference/app-versions/
+Γ£ö Using remote Android credentials (Expo server)
+node.exe : Γ£ö Using 
+Keystore from configuration: 
+Build Credentials -waZaK0hVh 
+(default)
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Γ£ö Usi  
+  ng Keyst...K0hVh (defaul   
+ t):String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+
+Compressing project files and uploading to EAS Build. Learn more: https://expo.fyi/eas-build-archive
+- Uploading to EAS Build (0 
+/ 490 KB)\ Uploading to EAS 
+Build (64.0 KB / 490 KB)| 
+Uploading to EAS Build (64.0 
+KB / 490 KB)/ Uploading to 
+EAS Build (64.0 KB / 490 
+KB)- Uploading to EAS Build 
+(192 KB / 490 KB)\ Uploading 
+to EAS Build (192 KB / 490 
+KB)| Uploading to EAS Build 
+(192 KB / 490 KB)/ Uploading 
+to EAS Build (384 KB / 490 
+KB)- Uploading to EAS Build 
+(490 KB / 490 KB)\ Uploading 
+to EAS Build (490 KB / 490 
+KB)| Uploading to EAS Build 
+(490 KB / 490 KB)/ Uploading 
+to EAS Build (490 KB / 490 
+KB)- Uploading to EAS Build 
+(490 KB / 490 KB)\ Uploading 
+to EAS Build (490 KB / 490 
+KB)| Uploading to EAS Build 
+(490 KB / 490 KB)/ Uploading 
+to EAS Build (490 KB / 490 
+KB)- Uploading to EAS Build 
+(490 KB / 490 KB)Γ£ö 
+Uploaded to EAS 2s
+- Computing project 
+fingerprint\ Computing 
+project fingerprint| 
+Computing project 
+fingerprint/ Computing 
+project fingerprint- 
+Computing project 
+fingerprint\ Computing 
+project fingerprint| 
+Computing project 
+fingerprint/ Computing 
+project fingerprint- 
+Computing project 
+fingerprint\ Computing 
+project fingerprint| 
+Computing project 
+fingerprint/ Computing 
+project fingerprint- 
+Computing project 
+fingerprint\ Computing 
+project fingerprint| 
+Computing project 
+fingerprint/ Computing 
+project fingerprintΓ£ö 
+Computed project fingerprint
+
+See logs: https://expo.dev/accounts/salmanjoyiaa/projects/urbansaudi-mobile-admin/builds/f2ecd514-42c3-496e-8dca-12ce8ee88ca5
+
+Waiting for build to complete. You can press Ctrl+C to exit.
+- Waiting for build to 
+complete.\ Waiting for build 
+to complete.| Waiting for 
+build to complete./ Waiting 
+for build to complete.- 
+Waiting for build to 
+complete.\ Build queued...| 
+Build queued.../ Build 
+queued...- Build queued...\ 
+Build queued...| Build 
+queued.../ Build queued...- 
+Build queued...\ Build 
+queued...| Build queued.../ 
+Build queued...- Build 
+queued...\ Build queued...| 
+Build queued.../ Build 
+queued...- Build queued...\ 
+Build queued...| Build 
+queued.../ Build queued...- 
+Build queued...\ Build 
+queued...| Build queued.../ 
+Build queued...- Build 
+queued...\ Build queued...| 
+Build queued.../ Build 
+queued...- Build queued...\ 
+Build queued...| Build 
+queued.../ Build queued...- 
+Build queued...\ Build 
+queued...| Build queued.../ 
+Build queued...- Build 
+queued...\ Build queued...| 
+Build queued.../ Build 
+queued...- Build queued...\ 
+Build queued...| Build 
+queued.../ Build queued...- 
+Build queued...\ Build 
+queued...| Build queued.../ 
+Build queued...- Build 
+queued...\ Build queued...| 
+Build queued.../ Build 
+queued...- Build queued...\ 
+Build queued...| Build 
+queued.../ Build queued...- 
+Build queued...\ Build 
+queued...| Build queued.../ 
+Build queued...- Build 
+queued...\ Build queued...| 
+Build queued.../ Build 
+queued...- Build queued...\ 
+Build queued...| Build 
+queued.../ Build queued...- 
+Build queued...\ Build 
+queued...| Build queued.../ 
+Build queued...- Build 
+queued...\ Build queued...| 
+Build queued.../ Build 
+queued...- Build queued...\ 
+Build queued...| Build 
+queued.../ Build queued...- 
+Build queued...  Build 
+queued...
+
+Start builds sooner in the priority queue.
+Sign up for a paid plan at https://expo.dev/accounts/salmanjoyiaa/settings/billing
+
+Waiting in Free tier queue
+
+- Build is about to start\ 
+Build in progress...| Build 
+in progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...- Build in 
+progress...\ Build in 
+progress...| Build in 
+progress.../ Build in 
+progress...Γ£û Build failed
+≡ƒñû Android build failed:
+Unknown error. See logs of the Bundle JavaScript build phase for more information.

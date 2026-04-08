@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors, spacing, borderRadius, typography } from '@/theme';
+import { PressableScale } from '@/components/ui/PressableScale';
 import type { VisitStatus, VisitStatusCounts } from '@/types';
 import { VISIT_STATUS_LABELS, VISIT_STATUS_ICONS, getStatusColors } from '@/utils/constants';
 
@@ -13,6 +14,10 @@ interface StatusChipsProps {
 
 const STATUSES: VisitStatus[] = ['pending', 'assigned', 'confirmed', 'cancelled', 'completed'];
 
+/**
+ * Horizontal scrolling status filter chips with count bubbles.
+ * Uses PressableScale for premium tap feedback.
+ */
 export function StatusChips({ counters, activeFilter, onFilterChange }: StatusChipsProps) {
   const total = Object.values(counters).reduce((a, b) => a + b, 0);
 
@@ -23,9 +28,8 @@ export function StatusChips({ counters, activeFilter, onFilterChange }: StatusCh
       contentContainerStyle={styles.container}
     >
       {/* All chip */}
-      <TouchableOpacity
+      <PressableScale
         onPress={() => onFilterChange(null)}
-        activeOpacity={0.7}
         style={[
           styles.chip,
           activeFilter === null && styles.chipActive,
@@ -39,7 +43,7 @@ export function StatusChips({ counters, activeFilter, onFilterChange }: StatusCh
             {total}
           </Text>
         </View>
-      </TouchableOpacity>
+      </PressableScale>
 
       {STATUSES.map((status) => {
         const isActive = activeFilter === status;
@@ -47,10 +51,9 @@ export function StatusChips({ counters, activeFilter, onFilterChange }: StatusCh
         const count = counters[status];
 
         return (
-          <TouchableOpacity
+          <PressableScale
             key={status}
             onPress={() => onFilterChange(isActive ? null : status)}
-            activeOpacity={0.7}
             style={[
               styles.chip,
               isActive && { backgroundColor: statusColors.bg, borderColor: statusColors.border },
@@ -79,7 +82,7 @@ export function StatusChips({ counters, activeFilter, onFilterChange }: StatusCh
                 {count}
               </Text>
             </View>
-          </TouchableOpacity>
+          </PressableScale>
         );
       })}
     </ScrollView>
@@ -99,15 +102,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
     borderRadius: borderRadius.full,
-    backgroundColor: colors.card,
+    backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
   },
   chipActive: {
     backgroundColor: colors.primaryLight,
-    borderColor: colors.primary,
+    borderColor: colors.primaryBorder,
   },
   chipLabel: {
+    ...typography.caption,
     fontSize: 13,
     fontWeight: '500',
     color: colors.textSecondary,
@@ -119,12 +123,13 @@ const styles = StyleSheet.create({
     minWidth: 20,
     height: 20,
     borderRadius: 10,
-    backgroundColor: colors.surfaceElevated,
+    backgroundColor: colors.shimmer,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 4,
   },
   countText: {
+    ...typography.caption,
     fontSize: 11,
     fontWeight: '700',
     color: colors.textMuted,

@@ -1,0 +1,20 @@
+﻿Unsupported platform, macOS or Linux is required to build apps for Android
+node.exe :     Error: build 
+command failed.
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecifi    ed: (    
+Error: bu    ild command 
+failed    .:String) [], Remo 
+   teException
+    + FullyQualifiedEr    
+rorId : NativeComm    
+andError
+ 

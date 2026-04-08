@@ -1,4 +1,8 @@
-export { colors } from './colors';
+export { colors, alpha, shadows, ambientShadow } from './colors';
 export type { StatusKey } from './colors';
-export { spacing, borderRadius } from './spacing';
-export { typography } from './typography';
+export {
+  typography,
+  fontDisplay, fontDisplayMedium, fontDisplayRegular,
+  fontBody, fontBodyMedium, fontBodySemiBold, fontBodyBold,
+} from './typography';
+export { spacing, borderRadius, animation } from './spacing';

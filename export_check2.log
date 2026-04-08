@@ -1,0 +1,24 @@
+﻿env: load .env.local
+env: export EXPO_PUBLIC_SUPABASE_URL EXPO_PUBLIC_SUPABASE_ANON_KEY EXPO_PUBLIC_API_BASE_URL
+Starting Metro Bundler
+Android Bundling failed 512ms node_modules\expo-router\entry.js (1 module)
+node.exe : SyntaxError: node_modules\expo-router\entry.js: [BABEL]: Cannot find module 
+'react-native-worklets/plugin'
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (SyntaxError: no...orklets/plugin':String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Require stack:
+- D:\Vibe\urbansaudimobileapp\node_modules\react-native-reanimated\plugin\index.js
+- D:\Vibe\urbansaudimobileapp\node_modules\@babel\core\lib\config\files\module-types.js
+- D:\Vibe\urbansaudimobileapp\node_modules\@babel\core\lib\config\files\configuration.js
+- D:\Vibe\urbansaudimobileapp\node_modules\@babel\core\lib\config\files\index.js
+- D:\Vibe\urbansaudimobileapp\node_modules\@babel\core\lib\index.js
+- D:\Vibe\urbansaudimobileapp\node_modules\@expo\metro-config\build\transform-worker\metro-transform-worker.js
+- D:\Vibe\urbansaudimobileapp\node_modules\@expo\metro-config\build\transform-worker\transform-worker.js
+- D:\Vibe\urbansaudimobileapp\node_modules\metro\src\DeltaBundler\Worker.flow.js
+- D:\Vibe\urbansaudimobileapp\node_modules\metro\src\DeltaBundler\Worker.js
+- D:\Vibe\urbansaudimobileapp\node_modules\jest-worker\build\workers\processChild.js (While processing: 
+D:\Vibe\urbansaudimobileapp\node_modules\react-native-reanimated\plugin\index.js)
